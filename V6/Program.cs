@@ -36,14 +36,19 @@ namespace Sqlite
 			// instanciranje SQL naredbe za INSERT
 			SqliteCommand dbInsertCmd = con.CreateCommand();
 
+			// instanciranje datuma (31.12.1988)
 			DateTime datum = new DateTime(1988, 12, 31);
 
+			// postavljanje SQL komande za unos
 			dbInsertCmd.CommandText = String.Format(@"INSERT INTO student (ime, prezime, datum_rodjenja, zaposlen) 
 														VALUES ('Hrvoje', 'Horvat', {0}, 1)", datum.ToFileTime());
-			
+
+			// dobivamo povratnu informaciju o tome koliko redaka je unešeno/izmjenjeno
 			int unesenoRedaka = dbInsertCmd.ExecuteNonQuery();
 
 			Console.WriteLine("Unešeno je {0} redaka", unesenoRedaka);
+
+			Console.WriteLine(DateTime.FromFileTime(1));
 
 			// instanciranje objekta za provođenje SQL naredbe
 			SqliteCommand dbQueryCmd = con.CreateCommand();
@@ -54,8 +59,9 @@ namespace Sqlite
 			// izvršavanje naredbe vraća "reader"
 			SqliteDataReader reader = dbQueryCmd.ExecuteReader();
 
-			Console.WriteLine("Broj stupaca u rezultatu: ", reader.FieldCount);
-
+			Console.WriteLine("Broj stupaca u rezultatu: {0}", reader.FieldCount);
+			Console.WriteLine("Broj zapisa u tablici: {0}", pobrojiZapise(con));
+			Console.WriteLine("---------------------------------------------");
 
 			// dohvat sljedećeg retka 
 			while (reader.Read())
@@ -73,13 +79,27 @@ namespace Sqlite
 				 * pomoću metode "DateTime.FromFileTime" */
 				DateTime datumRodjenja = DateTime.FromFileTime(reader.GetInt64(3));
 
-				Console.WriteLine("Ime i prezime: {0} {1} {2} {3} {4}",
+				Console.WriteLine("{0} {1} {2} {3} {4}",
 								  id, firstName, lastName, datumRodjenja, zaposlen);
 			}
-			// clean up
+			Console.WriteLine("---------------------------------------------");
+
+			// clean up, uvijek je lijepo počistiti za sobom
 			reader.Dispose();
 			dbQueryCmd.Dispose();
 			con.Close();
+		}
+
+		private static long pobrojiZapise(SqliteConnection con)
+		{
+			// primjer naredbe koja vraća skalarnu vrijednost
+
+			SqliteCommand countCommand = con.CreateCommand();
+			countCommand.CommandText = "SELECT COUNT(*) FROM student";
+
+			long brojZapisa = (long) countCommand.ExecuteScalar();
+
+			return brojZapisa;
 		}
 	}
 }

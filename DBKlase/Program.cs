@@ -43,6 +43,9 @@ namespace DBKlase
 			}
 
 			DB.ZatvoriKonekciju();
+
+			Console.WriteLine("Press any key to continue...");
+			Console.ReadKey();
 		}
 	}
 }

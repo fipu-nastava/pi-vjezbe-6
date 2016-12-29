@@ -89,7 +89,7 @@ namespace DBKlase
 			SqliteCommand c = DB.con.CreateCommand();
 
 			c.CommandText = String.Format(@"INSERT INTO Artikl (naziv, cijena)
-				VALUES ('{0}', {1})", a.Naziv, a.Cijena);
+				VALUES ('{0}', '{1}')", a.Naziv, a.Cijena);
 
 			c.ExecuteNonQuery();
 			c.Dispose();

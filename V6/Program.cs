@@ -88,6 +88,9 @@ namespace Sqlite
 			reader.Dispose();
 			dbQueryCmd.Dispose();
 			con.Close();
+
+			Console.WriteLine("Press any key to continue...");
+			Console.ReadKey();
 		}
 
 		private static long pobrojiZapise(SqliteConnection con)

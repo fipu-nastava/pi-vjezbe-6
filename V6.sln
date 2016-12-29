@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sqlite", "V6\Sqlite.csproj"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBKlase", "DBKlase\DBKlase.csproj", "{A4A815C7-D636-42B5-AF05-CD4A61F0D6CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM", "ORM\ORM.csproj", "{A5E45D28-98D0-4193-8A22-0255C249BC08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,5 +21,9 @@ Global
 		{A4A815C7-D636-42B5-AF05-CD4A61F0D6CB}.Debug|x86.Build.0 = Debug|x86
 		{A4A815C7-D636-42B5-AF05-CD4A61F0D6CB}.Release|x86.ActiveCfg = Release|x86
 		{A4A815C7-D636-42B5-AF05-CD4A61F0D6CB}.Release|x86.Build.0 = Release|x86
+		{A5E45D28-98D0-4193-8A22-0255C249BC08}.Debug|x86.ActiveCfg = Debug|x86
+		{A5E45D28-98D0-4193-8A22-0255C249BC08}.Debug|x86.Build.0 = Debug|x86
+		{A5E45D28-98D0-4193-8A22-0255C249BC08}.Release|x86.ActiveCfg = Release|x86
+		{A5E45D28-98D0-4193-8A22-0255C249BC08}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal
